@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MessageViewModel>
+@{
+    ViewBag.Title = "Съобщения, от клиенти";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row">
+    @foreach (var a in Model)
+    {
+        <div class="card col-4" style="width: 20rem; ">
+            <div class="card-body">
+                <h5 class="card-title mt-1">@a.Name</h5>
+                <p class="mb-0"><span class="fw-bold">Телефон: </span>@a.PhoneNumber</p>
+                <p class="mb-0"><span class="fw-bold">Имейл: </span>@a.Email</p>
+                <p class="mb-0"><span class="fw-bold">Относно: </span>@a.About</p>
+                <p class="mb-0"><span class="fw-bold">Съобщение: </span>@a.Message</p>
+
+                <form method="post" action="/admin/deletemessege" onsubmit="return confirm('Сигурни ли сте, че искате да изтриете това съобщение?')">
+                    <input type="hidden" name="Id" value="@a.Id" />
+                    <br>
+                    <button type="submit">Прочетено</button>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,184 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="mt-4 p-5 bg-light text-center">
+        <h2 class="display-4">Здравей, Админ!</h2>
+        <p class="lead mb-1 mt-3">
+            Това е твоето администраторско меню - тук можеш да  <b>създаваш</b> и <b>редактираш</b>,
+            мебели, аксесоари и отстъпки.
+
+        </p>
+        <p class="lead mt-1">
+            Също така може да видиш <b>всички клиенти</b> и <b>техните поръчки и съобщения</b> в системата.
+        </p>
+        <hr class="my-4">
+        <a asp-area="" asp-controller="Admin" asp-action="Add"
+           class="btn btn-primary btn-lg">Добавяне на мебел</a>
+        <span>  |   </span>
+        <a asp-area="" asp-controller="Admin" asp-action="AddAcccesoaries"
+           class="btn btn-primary btn-lg">Добавяне на аксесоари</a>
+        <span>  |   </span>
+        <a asp-area="" asp-controller="Admin" asp-action="AddDiscount"
+           class="btn btn-primary btn-lg">Добавяне на отстъпка</a>
+    </div>
+}
+else
+{
+    <div class="container-fluid">
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="width: 100%">
+                    <img src="~/furniture.webp" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/BG-desktop-50__4_.webp" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/BG-trees-desktop-50__1_.webp" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+
+    <table>
+        <tr>
+            <th>Безплатна доставка</th>
+            <th>Плащане при доставка</th>
+            <th>365 дни гаранция за връщане*</th>
+
+        </tr>
+        <tr>
+            <td>Безплатна доставка на мебели в цяла</td>
+            <td>Може да платите с пари в брой или</td>
+            <td>Ако не сте доволни от направената</td>
+            
+        </tr>
+        <tr>
+            <td>България. Доставяме</td>
+            <td>с банкова карта в момента на доставката.</td>
+            <td>покупка, можете да заявите връщане в</td>
+        </tr>
+        <tr> 
+        <td>специализиран транспорт, за да</td>
+        <td> Не се изисква аванс или предплащане.</td>
+        <td>Рамките на 365 дни и да получите</td>
+        </tr>
+        <tr>
+        <td>гарантираме безопасното пристигане</td>
+        <td></td>
+         <td>цялата заплатена сума обратно</td>
+        </tr>
+        <tr>
+        <td>
+            на Вашите мебели.
+            
+        </td>
+        </tr>
+    </table>
+
+ <br />
+ <br />
+ <p><centre><h3>Мебели</h3></centre></p>
+
+    <style>
+        .furniture-gallery {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+            .furniture-gallery a {
+                max-width: calc(33% - 20px); /* Намаляваме широчината на връзките, за да се поберат 3 на ред с разстояние 20px между тях */
+                display: block; /* Нужно е да превърнем връзките в блокове, за да можем да им приложим max-width */
+            }
+
+            .furniture-gallery img {
+                width: 100%; /* Снимките да заемат цялата ширина на връзките */
+                height: auto;
+            }
+    </style>
+
+    <div class="container-fluid">
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container-fluid">
+                        <div class="furniture-gallery">
+                            <a href="@Url.Action("All", "Furniture", new { category = "Други" })">
+                                <img src="~/2523913.webp" alt="Furniture 1">
+                            </a>
+                            <a href="@Url.Action("All", "Furniture", new { category = "Детска стая" })">
+                                <img src="~/3614521.webp" alt="Furniture 2">
+                            </a>
+                            <a href="@Url.Action("All", "Furniture", new { category = "Гардероби" })">
+                                <img src="~/3326863.webp" alt="Furniture 3">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="container-fluid">
+                        <div class="furniture-gallery">
+                            <a href="@Url.Action("All", "Furniture")"><img src="~/2733941.webp" alt="Furniture 1"></a>
+                            <a href="@Url.Action("All", "Furniture")"><img src="~/2744351.webp" alt="Furniture 2"></a>
+                            <a href="@Url.Action("All", "Furniture")"><img src="~/3157884.webp" alt="Furniture 3"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="container-fluid">
+                        <div class="furniture-gallery">
+                            <a href="@Url.Action("All", "Furniture")"><img src="~/2523913.webp" alt="Furniture 1"></a>
+                            <a href="@Url.Action("All", "Furniture")"><img src="~/2519608.webp" alt="Furniture 2"></a>
+                            <a href="@Url.Action("All", "Furniture")"><img src="~/3326863.webp" alt="Furniture 3"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+     
+ 
+
+ 
+   
+
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <br />
+
+  
+}
+ 

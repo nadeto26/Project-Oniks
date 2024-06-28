@@ -1,0 +1,63 @@
+﻿@model AllViewModelAccesoaries
+@{
+    ViewBag.Title = "Добавяне на нов аксесоар";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form asp-action="AddAcccesoaries" method="post">
+            <div class="mb-3">
+                <label asp-for="@Model.Name" class="form-label-add-edit">Name</label>
+                <input asp-for="@Model.Name" class="form-control" aria-required="true" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Description" class="form-label-add-edit">Description</label>
+                <textarea asp-for="@Model.Description" class="form-control" aria-required="true" rows="5"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.ImageUrl" class="form-label-add-edit">Image URL</label>
+                <input asp-for="@Model.ImageUrl" class="form-control" aria-required="true" />
+                <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Price" class="form-label-add-edit">Price</label>
+                <input asp-for="@Model.Price" class="form-control" aria-required="true" rows="5" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+              <div class="mb-3">
+                <label asp-for="@Model.NewPrice" class="form-label-add-edit">Нова цена</label>
+                <input asp-for="@Model.NewPrice" class="form-control" aria-required="true" rows="5" />
+                <span asp-validation-for="NewPrice" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.OldPrice" class="form-label-add-edit">Намалена цена</label>
+                <input asp-for="@Model.OldPrice" class="form-control" aria-required="true" rows="5" />
+                <span asp-validation-for="OldPrice" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Importer" class="form-label-add-edit">Вносител</label>
+                <input asp-for="@Model.Importer" class="form-control" aria-required="true" />
+                <span asp-validation-for="@Model.Importer" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Delivery" class="form-label-add-edit">Доставка</label>
+                <input asp-for="@Model.Delivery" class="form-control" aria-required="true" />
+                <span asp-validation-for="@Model.Delivery" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <input style="background-color: black; color: #ffffff;" class="btn btn-custom mb-2 w-100 p-3 fw-bold" type="submit" value="Add" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

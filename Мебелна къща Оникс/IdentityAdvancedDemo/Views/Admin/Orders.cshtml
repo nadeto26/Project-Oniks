@@ -1,0 +1,64 @@
+﻿@model IEnumerable<IdentityAdvancedDemo.Models.Admin.Oders>
+
+@{
+    ViewBag.Title = "Поръчки, от клиенти";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="container">
+    @{
+        // Групиране на поръчките по FullName
+        var groupedOrders = Model.GroupBy(order => order.FullName);
+    }
+
+    @foreach (var userGroup in groupedOrders)
+    {
+        // Извличане на името на потребителя от ключа на групата
+        var userName = userGroup.Key;
+
+        // Пропускане на групата, ако името е null
+        if (userName != null)
+        {
+            <div class="user-container">
+                <h5 class="user-title">Потребител: @userName</h5>
+                <h5 class="user-address">Адрес: @userGroup.First().Address</h5>
+                <h5 class="user-phonenumber">Телефон: @userGroup.First().Phonenumber</h5>
+                <div class="orders-container">
+                    @foreach (var order in userGroup)
+                    {
+                        <div class="card col-4" style="width: 20rem;">
+                            <div class="card-body">
+                                <hr />
+                                @if (order.FurnitureName != null)
+                                {
+                                    <p class="mb-0"><span class="fw-bold">Мебел: </span>@order.FurnitureName</p>
+                                    <p class="mb-0"><span class="fw-bold">Количество: </span>@order.QuentityFurniture</p>
+                                }
+                                @if (order.AccessoriesName != null)
+                                {
+                                    <p class="mb-0"><span class="fw-bold">Аксесоар: </span>@order.AccessoriesName</p>
+                                    <p class="mb-0"><span class="fw-bold">Количество: </span>@order.QuentityAccessory</p>
+                                }
+                                @if (order.DiscountName != null)
+                                {
+                                    <p class="mb-0"><span class="fw-bold">Отстъпка: </span>@order.DiscountName</p>
+                                    <p class="mb-0"><span class="fw-bold">Количество: </span>@order.QuentityDiscount</p>
+                                }
+                                <form method="post" action="/admin/deleteorder" onsubmit="return confirm('Сигурни ли сте, че искате да изтриете това съобщение?')">
+                                    <input type="hidden" name="orderId" value="@order.Id" />
+                                    <button type="submit">Извършена поръчка</button>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

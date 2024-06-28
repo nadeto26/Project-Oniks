@@ -1,0 +1,52 @@
+﻿@model MessageViewModel
+@{
+    ViewBag.Title = "Контакти";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+ <center> 
+<div class="row">
+    <div class="col-lg-6 order-lg-2">
+        <img src="~/d9c4959cfc1255250d6d9aafe81b82d5.jpg" alt="Контактна снимка" class="img-fluid mb-3" style="width: 80%; max-height: 70%" />
+    </div>
+    <div class="col-lg-6 order-lg-1">
+        <div class="contact-form">
+            <form asp-action="AddMessege" method="post">
+                <div class="mb-3">
+                    <label asp-for="@Model.Name" class="form-label-add-edit">Име</label>
+                    <input asp-for="@Model.Name" class="form-control" aria-required="true" />
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Email" class="form-label-add-edit">Имейл</label>
+                    <input asp-for="@Model.Email" class="form-control" aria-required="true" />
+                    <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.PhoneNumber" class="form-label-add-edit">Телефон</label>
+                    <input asp-for="@Model.PhoneNumber" class="form-control" aria-required="true" />
+                    <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.About" class="form-label-add-edit">Относно</label>
+                    <input asp-for="@Model.About" class="form-control" aria-required="true" />
+                    <span asp-validation-for="@Model.About" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Message" class="form-label-add-edit">Съобщение*</label>
+                    <textarea asp-for="@Model.Message" class="form-control" aria-required="true" rows="5"></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <input style="background-color: black; color: #ffffff;" class="btn btn-custom mb-2 w-100 p-3 fw-bold" type="submit" value="Изпрати" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</center>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

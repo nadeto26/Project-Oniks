@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DiplomenProekt</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/DiplomenProekt.styles.css" asp-append-version="true" />
+     
+
+</head>
+ 
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <img src="~/Logo-Oniks-png (1).png" alt="MyApp Logo" style="width: 100px; height: auto;" />
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-center" id="navbar">
+                    <ul class="navbar-nav mr-auto">
+                    @if (User.IsInRole("Admin"))
+                    {
+                            
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Начало</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Furniture" asp-action="All">Мебели</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Furniture" asp-action="AllPromocii">Промоции</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Furniture" asp-action="AllAccesoaries">Аксесоари</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Furniture" asp-action="AllMessages">Съобщения</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Orders">Поръчки</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AllUsers">Потребители</a>
+                            </li>
+                           
+                    }
+                    else
+                    {
+                         
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Начало</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Furniture" asp-action="All">Мебели</a>
+                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Furniture" asp-action="AllPromocii">Промоции</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Furniture" asp-action="AllAccesoaries">Аксесоари</a>
+                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Furniture" asp-action="AboutUs">За нас</a>
+                            </li>
+
+                         <li class="nav-item">
+                         <a class="nav-link text-dark" asp-area="" asp-controller="Furniture" asp-action="AddMessege">Контакти</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Furniture" asp-action="CartFurniture">Количка</a>
+                        </li>
+                    
+                    }
+                    </ul>
+                </div>
+               <partial name="_LoginPartial" />
+            </div>
+        </nav>
+    </header>
+                    
+                    
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <br />
+    <br />
+    <br />
+    <center> 
+    <div id="contact-info">
+        <img src="~/Logo-Oniks-png (1).png" alt="Снимка" style="float: left; width: auto; max-width: 50%; height: auto; max-height: 100%; margin-right: 20px;">
+        <table>
+            <tr>
+                <td>Мебели</td>
+                <td>Магазин София, ж.к. Дианабад</td>
+                <td>+359 878 484820</td>
+            </tr>
+            <tr>
+                <td>Услуги</td>
+                <td>ул. „Николай Хайтов“ 32, Магазин 3</td>
+                <td>+359 887 517361</td>
+            </tr>
+            <tr>
+                <td>Контакти</td>
+                <td>Магазин Благоевград</td>
+                <td>+359 879 166266</td>
+            </tr>
+            <tr>
+                <td>За поръчки</td>
+                <td>ул. „Александър Стамболийски“ 42</td>
+                <td>info@mebeli-oniks.com</td>
+            </tr>
+        </table>
+        <div style="clear: both;"></div>
+    </div>
+    </center>
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <center>&copy; 2024 Мебелна къща "Оникс". All rights reserved. Nadezhda Karapetrova </center>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

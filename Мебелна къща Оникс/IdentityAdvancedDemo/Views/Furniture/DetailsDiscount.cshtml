@@ -1,0 +1,40 @@
+﻿@model AllDiscountViewModel
+
+@{
+    ViewBag.Title = "Детайли";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="container" style="display:inline">
+    <div class="row">
+        <div class="col-4">
+            <img class="card-img-top" style="width: 20rem;"
+                 src="@Model.ImageUrl" alt="House Image">
+        </div>
+        <div class="card col-8 border-0">
+            <p style="font-size:25px;"><u>@Model.Name</u></p>
+            <p>Доставка: <b>@Model.Delivery дни</b></p>
+           
+                <p>
+                    Стара цена:
+                    <b>@Model.OldPrice лв.</b>
+                </p>
+                <p>
+                    Намалена цена:
+                    <b>@Model.NewPrice лв.</b>
+                </p>
+            <p>Вносител: <b>@Model.Importer</b></p>
+            
+            @if (Model.Height != null && Model.Weight != null)
+            {
+                <p>Височина: <b>@Model.Height cm</b></p>
+                <p>Широчина: <b>@Model.Weight cm</b></p>
+            }
+
+            <p></p>
+
+        </div>
+    </div>
+</div>

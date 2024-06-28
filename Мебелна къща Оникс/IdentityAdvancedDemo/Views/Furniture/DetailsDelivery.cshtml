@@ -1,0 +1,40 @@
+﻿@model DeliveryDetailsViewModel
+
+<h2>Въведете данните за доставка</h2>
+
+<form asp-action="DetailsDelivery" method="post">
+    <div class="form-group">
+        <label asp-for="FullName">Пълно име:</label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Имейл:</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber">Телефон:</label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address">Адрес:</label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="City">Град:</label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PostalCode">Пощенски код:</label>
+        <input asp-for="PostalCode" class="form-control" />
+        <span asp-validation-for="PostalCode" class="text-danger"></span>
+    </div>
+
+    <form action="@Url.Action("Confirmation", "Furniture")" method="get">
+        <button type="submit" class="btn btn-primary">Потвърди</button>
+    </form>
+</form>
